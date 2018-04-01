@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "DanchukAS\\Crypt\\": "src/"
+    }
+  },
+  "require-dev": {
+    "pdepend/pdepend" : "~2"
+  }
+}
