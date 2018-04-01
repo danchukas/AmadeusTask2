@@ -5,6 +5,7 @@
     }
   },
   "require-dev": {
-    "pdepend/pdepend" : "~2"
+    "pdepend/pdepend" : "~2.5",
+    "phpmd/phpmd" : "~2.6"
   }
 }
