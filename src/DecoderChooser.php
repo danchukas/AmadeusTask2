@@ -11,7 +11,7 @@ namespace DanchukAS\Crypt;
 
 use DanchukAS\Crypt\DecoderLib\LiveDecoder;
 
-class DecoderChooser
+class DecoderChooser implements IChooseDecoderByEncoder
 {
     public function byEncoder($encoder):ADecoder
     {
