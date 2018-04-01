@@ -6,14 +6,17 @@ declare(strict_types=1);
  * Date: 2018-03-31 12:17
  */
 
-namespace DanchukAS\Crypt;
+namespace DanchukAS\Crypt\HandlerCreatorLib;
 
 
-use DanchukAS\Crypt\HandlerLib\WPHandler;
+use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IHandlerCreator;
+use DanchukAS\Crypt\IHasProcessor;
+use DanchukAS\Crypt\IHasWatchers;
 
-class HandlerCreator extends AHandlerCreator
+class HandlerCreator implements IHandlerCreator
 {
-    public function build($name, $processor=null, $watcherBeforeList = null, $watcherAfterList = null):ADataHandler
+    public function build($name, $processor=null, $watcherBeforeList = null, $watcherAfterList = null):IDataHandler
     {
         $handler = new $name();
 

@@ -3,13 +3,13 @@ declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: danchukas
- * Date: 2018-03-30 10:53
+ * Date: 2018-04-01 13:02
  */
 
 namespace DanchukAS\Crypt;
 
 
-abstract class AAlgorithm
+interface IProcessorCreator
 {
-    abstract public function run($data);
+    public function create(string $name);
 }

@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\AlgorithmLib;
 
-use DanchukAS\Crypt\AAlgorithm;
+use DanchukAS\Crypt\IAlgorithm;
 
-class Md5 extends AAlgorithm
+class Md5 implements IAlgorithm
 {
     public function run($data) {
         return \var_export($data, true) . ' hashed by md5';

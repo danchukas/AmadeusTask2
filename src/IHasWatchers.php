@@ -12,12 +12,12 @@ namespace DanchukAS\Crypt;
 interface IHasWatchers
 {
     /**
-     * @param ADataHandler[] $watcherList
+     * @param IDataHandler[] $watcherList
      */
     public function setWatcherAfterList(array $watcherList):void;
 
     /**
-     * @param ADataHandler[] $watcherList
+     * @param IDataHandler[] $watcherList
      */
     public function setWatcherBeforeList(array $watcherList):void;
 

@@ -7,23 +7,29 @@ declare(strict_types=1);
  * Date: 2018-03-31 11:40
  */
 
-namespace DanchukAS\Crypt;
+namespace DanchukAS\Crypt\ConfigInitializerLib;
 
 use DanchukAS\Crypt\AlgorithmCreatorLib\AlgorithmCreator;
+use DanchukAS\Crypt\DecoderChooser;
+use DanchukAS\Crypt\HandlerCreatorLib\HandlerCreator;
 use DanchukAS\Crypt\HandlerLib\WPHandler;
+use DanchukAS\Crypt\IConfigInitializer;
+use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IDecoder;
+use DanchukAS\Crypt\IHandlerCreator;
 use DanchukAS\Crypt\ProcessorCreatorLib\ProcessorCreator;
 
-class ConfigInitializer extends IConfigInitializer
+class ConfigInitializer implements IConfigInitializer
 {
 
     /**
-     * @var ADataHandler
+     * @var IDataHandler
      */
     private $handler;
 
 
     /**
-     * @var ADecoder
+     * @var IDecoder
      */
     private $decoder;
 
@@ -52,19 +58,19 @@ class ConfigInitializer extends IConfigInitializer
     }
 
 
-    public function getHandler():ADataHandler
+    public function getHandler():IDataHandler
     {
         return $this->handler;
     }
 
 
-    public function getDecoder():ADecoder
+    public function getDecoder():IDecoder
     {
         return $this->decoder;
     }
 
 
-    private function initHandlerList(array $config, AHandlerCreator $handler_creator)
+    private function initHandlerList(array $config, IHandlerCreator $handler_creator)
     {
         $handler_list = new \stdClass();
         $handler_list->before = [];

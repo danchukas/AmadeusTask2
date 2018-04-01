@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\ProcessorCreatorLib;
 
 
-use DanchukAS\Crypt\AProcessor;
-use DanchukAS\Crypt\AProcessorCreator;
+use DanchukAS\Crypt\IProcessor;
+use DanchukAS\Crypt\IProcessorCreator;
 
-class ProcessorCreator extends AProcessorCreator
+class ProcessorCreator implements IProcessorCreator
 {
 
-    public function create(string $name):AProcessor
+    public function create(string $name):IProcessor
     {
         return new $name;
     }

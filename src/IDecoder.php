@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt;
 
 
-abstract class ADecoder
+interface IDecoder
 {
-    abstract public function getDecodeParam();
-    abstract public function isDecodePossible():bool;
+    public function getDecodeParam();
+    public function isDecodePossible():bool;
 }

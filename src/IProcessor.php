@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt;
 
-abstract class AProcessor
+interface IProcessor
 {
-    abstract public function run($data);
+    public function run($data);
 
-    abstract public function setAlgorithmList(array $algorithmList);
+    public function setAlgorithmList(array $algorithmList);
 }

@@ -11,5 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IChooseDecoderByEncoder
 {
-    public function byEncoder($encoder):ADecoder;
+    public function byEncoder($encoder):IDecoder;
 }

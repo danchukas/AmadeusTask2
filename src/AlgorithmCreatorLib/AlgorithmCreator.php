@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\AlgorithmCreatorLib;
 
 
-use DanchukAS\Crypt\AAlgorithm;
-use DanchukAS\Crypt\AAlgorithmCreator;
+use DanchukAS\Crypt\IAlgorithm;
+use DanchukAS\Crypt\IAlgorithmCreator;
 
-class AlgorithmCreator extends AAlgorithmCreator
+class AlgorithmCreator implements IAlgorithmCreator
 {
 
-    public function create(string $name):AAlgorithm
+    public function create(string $name):IAlgorithm
     {
         return new $name;
     }

@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\DecoderLib;
 
 
-use DanchukAS\Crypt\ADecoder;
+use DanchukAS\Crypt\IDecoder;
 use DanchukAS\Crypt\IHasDecodeParamForLastEncode;
 use DanchukAS\Crypt\IHasEncoder;
 
-class LiveDecoder extends ADecoder implements IHasEncoder
+class LiveDecoder implements IDecoder, IHasEncoder
 {
     /**
      * @var IHasDecodeParamForLastEncode

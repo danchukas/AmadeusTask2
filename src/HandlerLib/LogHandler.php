@@ -9,9 +9,9 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\HandlerLib;
 
 
-use DanchukAS\Crypt\ADataHandler;
+use DanchukAS\Crypt\IDataHandler;
 
-class LogHandler extends ADataHandler
+class LogHandler implements IDataHandler
 {
     public function run($data)
     {

@@ -3,13 +3,13 @@ declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: danchukas
- * Date: 2018-04-01 12:43
+ * Date: 2018-03-31 20:32
  */
 
 namespace DanchukAS\Crypt;
 
 
-abstract class AModule
+interface IDataHandler
 {
-    abstract public static function encode($data);
+    public function run($data);
 }

@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\ProcessorLib;
 
 use DanchukAS\Crypt\IDecodableAlgorithm;
-use DanchukAS\Crypt\AAlgorithm;
+use DanchukAS\Crypt\IAlgorithm;
 use DanchukAS\Crypt\IHasDecodeParamForLastEncode;
-use DanchukAS\Crypt\AProcessor;
+use DanchukAS\Crypt\IProcessor;
 
-class LinearEncoder extends AProcessor implements IHasDecodeParamForLastEncode
+class LinearEncoder implements IProcessor, IHasDecodeParamForLastEncode
 {
 
     private $decodeDataLastEncoded;
@@ -34,7 +34,7 @@ class LinearEncoder extends AProcessor implements IHasDecodeParamForLastEncode
         $decode_possible = true;
 
         foreach ($this->algorithmList as $algorithm) {
-            /** @var AAlgorithm $algorithm */
+            /** @var IAlgorithm $algorithm */
             $data = $algorithm->run($data);
 
             if (!$decode_possible) {

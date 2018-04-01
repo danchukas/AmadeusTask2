@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt;
 
 
-abstract class AProcessorCreator
+interface IAlgorithmCreator
 {
-    abstract public function create(string $name);
+    public function create(string $name):IAlgorithm;
 }

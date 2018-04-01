@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\AlgorithmLib;
 
-use DanchukAS\Crypt\AAlgorithm;
+use DanchukAS\Crypt\IAlgorithm;
 use DanchukAS\Crypt\IDecodableAlgorithm;
 
-class Aes256cbc extends AAlgorithm implements IDecodableAlgorithm
+class Aes256cbc implements IAlgorithm, IDecodableAlgorithm
 {
     private $dataForDecode;
 

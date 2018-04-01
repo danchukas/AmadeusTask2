@@ -7,12 +7,11 @@ declare(strict_types=1);
  */
 
 namespace DanchukAS\Crypt\ModuleLib;
-use DanchukAS\Crypt\ADataHandler;
-use DanchukAS\Crypt\AModule;
-use DanchukAS\Crypt\ConfigInitializer;
-use DanchukAS\Crypt\ADecoder;
-use DanchukAS\Crypt\DecoderChooser;
+use DanchukAS\Crypt\ConfigInitializerLib\ConfigInitializer;
+use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IDecoder;
 use DanchukAS\Crypt\IHasDecoder;
+use DanchukAS\Crypt\IModule;
 
 
 /**
@@ -20,15 +19,15 @@ use DanchukAS\Crypt\IHasDecoder;
  *
  * @package DanchukAS\Crypt
  */
-class CryptModule extends AModule implements IHasDecoder
+class CryptModule implements IModule, IHasDecoder
 {
     /**
-     * @var ADataHandler
+     * @var IDataHandler
      */
     private static $handler;
 
     /**
-     * @var ADecoder
+     * @var IDecoder
      */
     private static $decoder;
 

@@ -9,9 +9,9 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt;
 
 
-abstract class IConfigInitializer
+interface IConfigInitializer
 {
-    abstract public function init($config):void;
-    abstract public function getHandler():ADataHandler;
-    abstract public function getDecoder():ADecoder;
+    public function init($config):void;
+    public function getHandler():IDataHandler;
+    public function getDecoder():IDecoder;
 }

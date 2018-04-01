@@ -10,27 +10,27 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\HandlerLib;
 
-use DanchukAS\Crypt\ADataHandler;
-use DanchukAS\Crypt\AProcessor;
+use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IProcessor;
 use DanchukAS\Crypt\IHasProcessor;
 use DanchukAS\Crypt\IHasWatchers;
 
-class WPHandler extends ADataHandler implements IHasWatchers, IHasProcessor
+class WPHandler implements IDataHandler, IHasWatchers, IHasProcessor
 {
 
     /**
-     * @var AProcessor
+     * @var IProcessor
      */
     private $processor;
 
     /**
-     * @var ADataHandler[]
+     * @var IDataHandler[]
      */
     private $watcherBeforeList;
 
 
     /**
-     * @var ADataHandler[]
+     * @var IDataHandler[]
      */
     private $watcherAfterList;
 
@@ -48,14 +48,14 @@ class WPHandler extends ADataHandler implements IHasWatchers, IHasProcessor
     }
 
 
-    public function setProcessor(AProcessor $processor):void
+    public function setProcessor(IProcessor $processor):void
     {
         $this->processor = $processor;
     }
 
 
     /**
-     * @param ADataHandler[] $watcherList
+     * @param IDataHandler[] $watcherList
      */
     public function setWatcherBeforeList(array $watcherList):void
     {
@@ -64,7 +64,7 @@ class WPHandler extends ADataHandler implements IHasWatchers, IHasProcessor
 
 
     /**
-     * @param ADataHandler[] $watcherList
+     * @param IDataHandler[] $watcherList
      */
     public function setWatcherAfterList(array $watcherList):void
     {
@@ -73,7 +73,7 @@ class WPHandler extends ADataHandler implements IHasWatchers, IHasProcessor
 
 
     /**
-     * @param ADataHandler[] $watcherList
+     * @param IDataHandler[] $watcherList
      * @param mixed $data
      */
     private function runWatcherList(array $watcherList, $data):void

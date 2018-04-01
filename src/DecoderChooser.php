@@ -13,14 +13,14 @@ use DanchukAS\Crypt\DecoderLib\LiveDecoder;
 
 class DecoderChooser implements IChooseDecoderByEncoder
 {
-    public function byEncoder($encoder):ADecoder
+    public function byEncoder($encoder):IDecoder
     {
         // now accessed only 1 type decoder for all encoders
         return $this->getReversedCoder($encoder);
     }
 
 
-    private function getReversedCoder($coder):ADecoder
+    private function getReversedCoder($coder):IDecoder
     {
         $reversed_coder = new LiveDecoder();
 

@@ -11,5 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IHasProcessor
 {
-    public function setProcessor(AProcessor $processor):void;
+    public function setProcessor(IProcessor $processor):void;
 }

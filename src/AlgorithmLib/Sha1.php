@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\AlgorithmLib;
 
-use DanchukAS\Crypt\AAlgorithm;
+use DanchukAS\Crypt\IAlgorithm;
 
-class Sha1 extends AAlgorithm
+class Sha1 implements IAlgorithm
 {
     public function run($data) {
         return \var_export($data, true) . ' hashed by Sha1';
