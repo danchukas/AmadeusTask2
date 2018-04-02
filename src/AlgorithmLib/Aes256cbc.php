@@ -10,26 +10,21 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\AlgorithmLib;
 
 use DanchukAS\Crypt\IAlgorithm;
-use DanchukAS\Crypt\IDecodableAlgorithm;
+use DanchukAS\Crypt\IData;
 
-class Aes256cbc implements IAlgorithm, IDecodableAlgorithm
+
+class Aes256cbc implements IAlgorithm
 {
-    private $dataForDecode;
-
-    public function run($data)
+    public function run(IData $data):void
     {
-        $data = \var_export($data, true) . ' encrypted by Aes256cbc';
+        $handled_data = \var_export($data->getData(), true) . ' encrypted by Aes256cbc';
+        $data->setData($handled_data);
 
-        $this->dataForDecode = (object)[
+        $data_for_decode = (object)[
             'algorithm' => 'Aes256cbc',
             'salt' => \random_int(0, 99)
         ];
 
-        return $data;
-    }
-
-    public function getDecodeDataLastEncoded()
-    {
-        return $this->dataForDecode;
+        $data->addDecodeParam($data_for_decode);
     }
 }

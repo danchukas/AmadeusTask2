@@ -11,6 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IHasDecodeParamForLastEncode
 {
-    public function getDecodeDataLastEncoded();
-    public function isDecodePossible():bool;
+    public static function getDecodeDataLastEncoded();
 }

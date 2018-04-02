@@ -11,5 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IHandlerCreator
 {
-    public function build($name, $processor=null, $watcherBeforeList = null, $watcherAfterList = null):IDataHandler;
+    public function build($name, $saveDecodeParam = null):IDataHandler;
 }

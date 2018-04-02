@@ -9,12 +9,13 @@ declare(strict_types=1);
 namespace DanchukAS\Crypt\HandlerLib;
 
 
+use DanchukAS\Crypt\IData;
 use DanchukAS\Crypt\IDataHandler;
 
 class LogHandler implements IDataHandler
 {
-    public function run($data)
+    public function run(IData $data):void
     {
-        echo 'Logged: ' . \print_r($data, true) . \PHP_EOL;
+        echo 'Logged: ' . \print_r($data->getData(), true) . \PHP_EOL;
     }
 }

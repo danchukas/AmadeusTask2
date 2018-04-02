@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // tasks from Amadeus
-return include __DIR__ . '/ConfigLib/config__md5.php';
+//return include __DIR__ . '/ConfigLib/config__md5.php';
 //return include __DIR__ . '/ConfigLib/config__md5_md5.php';
 //return include __DIR__ . '/ConfigLib/config__sha1.php';
 //return include __DIR__ . '/ConfigLib/config__md5_sha1.php';
@@ -22,3 +22,6 @@ return include __DIR__ . '/ConfigLib/config__md5.php';
 
 // any combination for encode
 //return include __DIR__ . '/ConfigLib/config__aes-256-cbc_aes-256-cbc_aes-256-cbc.php';
+
+// version 2
+return include __DIR__ . '/ConfigLib/config_v2__aes-256-cbc_aes-256-cbc_aes-256-cbc.php';

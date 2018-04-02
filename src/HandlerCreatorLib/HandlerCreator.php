@@ -16,20 +16,12 @@ use DanchukAS\Crypt\IHasWatchers;
 
 class HandlerCreator implements IHandlerCreator
 {
-    public function build($name, $processor=null, $watcherBeforeList = null, $watcherAfterList = null):IDataHandler
+    public function build($name, $saveDecodeParam = null):IDataHandler
     {
         $handler = new $name();
 
-        if (null!== $processor && $handler instanceof IHasProcessor) {
-            $handler->setProcessor($processor);
-        }
-
-        if (null!== $watcherBeforeList && $handler instanceof IHasWatchers) {
-            $handler->setWatcherBeforeList($watcherBeforeList);
-        }
-
-        if (null!== $watcherAfterList && $handler instanceof IHasWatchers) {
-            $handler->setWatcherAfterList($watcherAfterList);
+        if (true === $saveDecodeParam && $handler instanceof ISaveDecodeParam) {
+            $handler->enableSaverDecodeParam();
         }
 
         return $handler;

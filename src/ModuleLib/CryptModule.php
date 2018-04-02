@@ -8,8 +8,12 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\ModuleLib;
 use DanchukAS\Crypt\ConfigInitializerLib\ConfigInitializer;
+use DanchukAS\Crypt\Data;
+use DanchukAS\Crypt\IData;
 use DanchukAS\Crypt\IDataHandler;
 use DanchukAS\Crypt\IDecoder;
+use DanchukAS\Crypt\IHasDecodeParam;
+use DanchukAS\Crypt\IHasDecodeParamForLastEncode;
 use DanchukAS\Crypt\IHasDecoder;
 use DanchukAS\Crypt\IModule;
 
@@ -19,18 +23,18 @@ use DanchukAS\Crypt\IModule;
  *
  * @package DanchukAS\Crypt
  */
-class CryptModule implements IModule, IHasDecoder
+class CryptModule implements IModule, IHasDecodeParamForLastEncode
 {
     /**
      * @var IDataHandler
      */
     private static $handler;
 
-    /**
-     * @var IDecoder
-     */
-    private static $decoder;
 
+    /**
+     * @var IData|IHasDecodeParam
+     */
+    private static $data;
 
     public static function init()
     {
@@ -40,26 +44,24 @@ class CryptModule implements IModule, IHasDecoder
         $conf_initializer->init($config);
 
         self::$handler = $conf_initializer->getHandler();
-
-        self::$decoder = $conf_initializer->getDecoder();
     }
 
 
     public static function encode($string)
     {
-        return self::$handler->run($string);
+        self::$data = new Data();
+        self::$data->setData($string);
+
+        self::$handler->run(self::$data);
+
+        return self::$data->getData();
     }
 
 
     public static function getDecodeDataLastEncoded()
     {
-        return self::$decoder->getDecodeParam();
+        return self::$data->getDecodeParam();
     }
 
-
-    public static function isDecodeLastEncodedPossible():bool
-    {
-        return self::$decoder->isDecodePossible();
-    }
 
 }

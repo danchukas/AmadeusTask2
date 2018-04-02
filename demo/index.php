@@ -20,8 +20,6 @@ $handled = CryptModule::encode($string);
 echo PHP_EOL . PHP_EOL . '---------- handle ----------' . PHP_EOL;
 echo PHP_EOL . $handled . PHP_EOL;
 
-if (CryptModule::isDecodeLastEncodedPossible()) {
-    $decode_param = CryptModule::getDecodeDataLastEncoded();
-    echo PHP_EOL . PHP_EOL . '------ Data for decode -----' . PHP_EOL;
-    echo PHP_EOL . print_r($decode_param, true) . PHP_EOL;
-}
+$decode_param = CryptModule::getDecodeDataLastEncoded();
+echo PHP_EOL . PHP_EOL . '------ Data for decode -----' . PHP_EOL;
+echo PHP_EOL . print_r($decode_param, true) . PHP_EOL;

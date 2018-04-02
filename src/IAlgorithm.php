@@ -11,5 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IAlgorithm
 {
-    public function run($data);
+    public function run(IData $data):void;
 }

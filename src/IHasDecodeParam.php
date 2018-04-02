@@ -3,14 +3,14 @@ declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: danchukas
- * Date: 2018-04-01 12:02
+ * Date: 2018-04-02 10:07
  */
 
 namespace DanchukAS\Crypt;
 
 
-interface IDecoder
+interface IHasDecodeParam
 {
     public function getDecodeParam();
-    public function isDecodePossible():bool;
+    public function addDecodeParam($param): void;
 }

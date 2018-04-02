@@ -11,5 +11,5 @@ namespace DanchukAS\Crypt;
 
 interface IDataHandler
 {
-    public function run($data);
+    public function run(IData $data):void;
 }

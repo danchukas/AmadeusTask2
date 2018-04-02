@@ -12,7 +12,7 @@ namespace DanchukAS\Crypt\ConfigInitializerLib;
 use DanchukAS\Crypt\AlgorithmCreatorLib\AlgorithmCreator;
 use DanchukAS\Crypt\DecoderChooser;
 use DanchukAS\Crypt\HandlerCreatorLib\HandlerCreator;
-use DanchukAS\Crypt\HandlerLib\WPHandler;
+use DanchukAS\Crypt\HandlerLib\CascadeHandler;
 use DanchukAS\Crypt\IConfigInitializer;
 use DanchukAS\Crypt\IDataHandler;
 use DanchukAS\Crypt\IDecoder;
@@ -28,45 +28,31 @@ class ConfigInitializer implements IConfigInitializer
     private $handler;
 
 
-    /**
-     * @var IDecoder
-     */
-    private $decoder;
-
-
     public function init($config):void
     {
-        $processor_creator = new ProcessorCreator();
-        $processor = $processor_creator->create($config->encoder->name);
-
-        $algorithm_list = $this->initEncoderParam($config->encoder->param);
-        $processor->setAlgorithmList($algorithm_list);
-
         $handler_creator = new HandlerCreator();
+
+        $handler = $handler_creator->build(
+            CascadeHandler::class,
+            true
+        );
+
+        $algorithm_list = $this->initAlgorithmList($config->encoderList);
+
 
         $watcher_list = $this->initHandlerList($config->watcherList, $handler_creator);
 
-        $this->handler = $handler_creator->build(
-            WPHandler::class,
-            $processor,
-            $watcher_list->before,
-            $watcher_list->after
-        );
+        $handler_list = \array_merge($watcher_list->before, $algorithm_list, $watcher_list->after);
 
-        $decoder_chooser = new DecoderChooser();
-        $this->decoder = $decoder_chooser->byEncoder($processor);
+        $handler->setHandlerList($handler_list);
+
+        $this->handler = $handler;
     }
 
 
     public function getHandler():IDataHandler
     {
         return $this->handler;
-    }
-
-
-    public function getDecoder():IDecoder
-    {
-        return $this->decoder;
     }
 
 
@@ -93,12 +79,14 @@ class ConfigInitializer implements IConfigInitializer
     }
 
 
-    private function initEncoderParam(array $param) {
+    private function initAlgorithmList(array $param) {
+
+        $handler_creator = new AlgorithmCreator();
 
         $algorithm_list = [];
-        $algorithm_creator = new AlgorithmCreator();
+
         foreach ($param as $algorithm) {
-            $algorithm_list[] = $algorithm_creator->create($algorithm->name);
+            $algorithm_list[] = $handler_creator->create($algorithm->name);
         }
 
         return $algorithm_list;

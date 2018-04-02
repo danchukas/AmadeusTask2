@@ -13,5 +13,4 @@ interface IConfigInitializer
 {
     public function init($config):void;
     public function getHandler():IDataHandler;
-    public function getDecoder():IDecoder;
 }
