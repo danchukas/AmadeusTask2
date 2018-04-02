@@ -12,8 +12,9 @@ namespace DanchukAS\Crypt\HandlerLib;
 
 use DanchukAS\Crypt\IData;
 use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IHasHandlerList;
 
-class CascadeHandler implements IDataHandler
+class CascadeHandler implements IDataHandler, IHasHandlerList
 {
 
     /**

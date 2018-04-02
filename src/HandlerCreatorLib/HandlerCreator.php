@@ -11,19 +11,11 @@ namespace DanchukAS\Crypt\HandlerCreatorLib;
 
 use DanchukAS\Crypt\IDataHandler;
 use DanchukAS\Crypt\IHandlerCreator;
-use DanchukAS\Crypt\IHasProcessor;
-use DanchukAS\Crypt\IHasWatchers;
 
 class HandlerCreator implements IHandlerCreator
 {
-    public function build($name, $saveDecodeParam = null):IDataHandler
+    public function build($name): IDataHandler
     {
-        $handler = new $name();
-
-        if (true === $saveDecodeParam && $handler instanceof ISaveDecodeParam) {
-            $handler->enableSaverDecodeParam();
-        }
-
-        return $handler;
+        return new $name();
     }
 }

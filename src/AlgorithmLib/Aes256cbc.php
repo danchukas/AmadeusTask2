@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\AlgorithmLib;
 
-use DanchukAS\Crypt\IAlgorithm;
 use DanchukAS\Crypt\IData;
+use DanchukAS\Crypt\IDataHandler;
+use DanchukAS\Crypt\IHasDecodeParam;
 
 
-class Aes256cbc implements IAlgorithm
+class Aes256cbc implements IDataHandler
 {
+
     public function run(IData $data):void
     {
         $handled_data = \var_export($data->getData(), true) . ' encrypted by Aes256cbc';
@@ -25,6 +27,8 @@ class Aes256cbc implements IAlgorithm
             'salt' => \random_int(0, 99)
         ];
 
-        $data->addDecodeParam($data_for_decode);
+        if ($data instanceof IHasDecodeParam) {
+            $data->addDecodeParam($data_for_decode);
+        }
     }
 }

@@ -3,13 +3,13 @@ declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: danchukas
- * Date: 2018-04-01 13:02
+ * Date: 2018-04-02 10:07
  */
 
 namespace DanchukAS\Crypt;
 
 
-interface IAlgorithmCreator
+interface IHasHandlerList
 {
-    public function create(string $name):IAlgorithm;
+    public function setHandlerList(array $watcherList): void;
 }

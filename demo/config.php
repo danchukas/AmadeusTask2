@@ -1,27 +1,25 @@
 <?php
 declare(strict_types=1);
 
-// tasks from Amadeus
-//return include __DIR__ . '/ConfigLib/config__md5.php';
-//return include __DIR__ . '/ConfigLib/config__md5_md5.php';
-//return include __DIR__ . '/ConfigLib/config__sha1.php';
-//return include __DIR__ . '/ConfigLib/config__md5_sha1.php';
-//return include __DIR__ . '/ConfigLib/config__aes-256-cbc.php';
+use DanchukAS\Crypt\AlgorithmLib\Aes256cbc;
+use DanchukAS\Crypt\HandlerLib\LogHandler;
 
-//return include __DIR__ . '/ConfigLib/config__log_nothing.php';
-//return include __DIR__ . '/ConfigLib/config__log_in.php';
-//return include __DIR__ . '/ConfigLib/config__log_out.php';
-//return include __DIR__ . '/ConfigLib/config__log_in_out.php';
+$config = [
+    (object)[
+        'name' => LogHandler::class
+    ],
+    (object)[
+        'name' => Aes256cbc::class
+    ],
+//    (object)[
+//        'name' => Md5::class
+//    ],
+//    (object)[
+//        'name' => Sha1::class
+//    ],
+    (object)[
+        'name' => LogHandler::class
+    ]
+];
 
-// for test decode possibility
-//return include __DIR__ . '/ConfigLib/config__aes-256-cbc.php_md5.php';
-//return include __DIR__ . '/ConfigLib/config__md5_aes-256-cbc.php';
-
-// any combination for hash
-//return include __DIR__ . '/ConfigLib/config__md5_aes-256-cbc_sha1.php';
-
-// any combination for encode
-//return include __DIR__ . '/ConfigLib/config__aes-256-cbc_aes-256-cbc_aes-256-cbc.php';
-
-// version 2
-return include __DIR__ . '/ConfigLib/config_v2__aes-256-cbc_aes-256-cbc_aes-256-cbc.php';
+return $config;

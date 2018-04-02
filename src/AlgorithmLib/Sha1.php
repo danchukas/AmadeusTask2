@@ -9,10 +9,9 @@ declare(strict_types=1);
 
 namespace DanchukAS\Crypt\AlgorithmLib;
 
-use DanchukAS\Crypt\IAlgorithm;
 use DanchukAS\Crypt\IData;
 
-class Sha1 implements IAlgorithm
+class Sha1 implements IDataHandler
 {
     public function run(IData $data):void
     {

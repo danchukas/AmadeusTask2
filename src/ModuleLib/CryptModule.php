@@ -11,10 +11,8 @@ use DanchukAS\Crypt\ConfigInitializerLib\ConfigInitializer;
 use DanchukAS\Crypt\Data;
 use DanchukAS\Crypt\IData;
 use DanchukAS\Crypt\IDataHandler;
-use DanchukAS\Crypt\IDecoder;
 use DanchukAS\Crypt\IHasDecodeParam;
 use DanchukAS\Crypt\IHasDecodeParamForLastEncode;
-use DanchukAS\Crypt\IHasDecoder;
 use DanchukAS\Crypt\IModule;
 
 

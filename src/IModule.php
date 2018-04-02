@@ -12,4 +12,6 @@ namespace DanchukAS\Crypt;
 interface IModule
 {
     public static function encode($data);
+
+    public static function init();
 }
